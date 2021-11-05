@@ -3,5 +3,44 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://kit.fontawesome.com/f009f0b241.js" crossorigin="anonymous")
   body
     block content
+    header
+      .logo 
+      menu
+        ul 
+          li.menu_item  
+            a(href="/" class="menu_item_a")
+              i(class="fas fa-home")
+          li.menu_item
+            a(href="/aboutUs" class="menu_item_a") aboutUs     
+    main
+      section.loot_crypto 
+        form(method="post" action="/submit_form" class="send_data_form" id="main_form")
+          .input_warning(id="input_warning") Please write you FaucetPay key
+          input(type="text" id="walletKey" name="walletKey" class="wallet_key" placeholder="Enter your (FaucetPay) microwallet key") 
+          .modal_wrapper(data-state="hide" id="modal_wrapper")
+            .modal-background
+            .modal 
+              .close(id="close")
+                i(class="fas fa-times")
+              .captcha_warning(id="captcha_warning") Captcha failed!
+              .g-recaptcha(
+                data-sitekey="6LcM_godAAAAAPCpkpweoPQ8lGCm0SRkF4hEeVnj" 
+                data-callback="onSubmit" 
+                data-action="submit"
+              )
+              input(
+                type="submit"   
+                id="submit" 
+                value="Claim your Satoshi!"
+              )
+              
+        a(class="modal_btn" id="modal_btn") Get Reward!
+    
+    footer
+      p.footer-text Made with love by Ilya and Dima | Poshli vse nahuy
+    script(src="https://www.google.com/recaptcha/api.js")
+    script(src="javascripts/modal.js")
+    script(src="javascripts/validation.js")
